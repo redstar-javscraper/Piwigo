@@ -234,7 +234,7 @@ SELECT id_uppercat, MAX(`rank`)+1 AS next_rank
   // new categories are the directories not present yet in the database
   foreach (array_diff($fs_fulldirs, array_keys($db_fulldirs)) as $fulldir)
   {
-    $dir = basename($fulldir);
+    $dir = getbasename($fulldir);
     if (preg_match($conf['sync_chars_regex'], $dir))
     {
       $insert = array(
@@ -516,7 +516,7 @@ SELECT id, path
     {
       continue;
     }
-    $filename = basename($path);
+    $filename = getbasename($path);
     if (!preg_match($conf['sync_chars_regex'], $filename))
     {
       $errors[] = array(
@@ -1059,6 +1059,14 @@ if (count($infos) > 0
         ));
   }
 }
+
+function getbasename($path) {
+
+  $pattern = (strncasecmp(PHP_OS, 'WIN', 3) ? '/([^\/]+)[\/]*$/' : '/([^\/\\\\]+)[\/\\\\]*$/');
+  if (preg_match($pattern, $path, $matches))
+      return $matches[1];
+  return '';
+  }
 
 // +-----------------------------------------------------------------------+
 // |                          sending html code                            |

@@ -817,7 +817,8 @@ $conf['themes_dir'] = PHPWG_ROOT_PATH.'themes';
 $conf['enable_synchronization'] = true;
 
 // permitted characters for files/directories during synchronization
-$conf['sync_chars_regex'] = '/^[a-zA-Z0-9-_.]+$/';
+// $conf['sync_chars_regex'] = '/^[a-zA-Z0-9-_.]+$/';
+$conf['sync_chars_regex'] = '/[\x{1100}-\x{11FF}\x{3130}-\x{318F}\x{AC00}-\x{D7AF}0-9a-zA-Z]+/u';
 
 // folders name excluded during synchronization
 $conf['sync_exclude_folders'] = array();
