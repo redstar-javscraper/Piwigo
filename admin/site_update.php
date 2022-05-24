@@ -1059,14 +1059,13 @@ if (count($infos) > 0
         ));
   }
 }
-
 function getbasename($path) {
 
-  $pattern = (strncasecmp(PHP_OS, 'WIN', 3) ? '/([^\/]+)[\/]*$/' : '/([^\/\\\\]+)[\/\\\\]*$/');
-  if (preg_match($pattern, $path, $matches))
-      return $matches[1];
-  return '';
-  }
+$pattern = (strncasecmp(PHP_OS, 'WIN', 3) ? '/([^\/]+)[\/]*$/' : '/([^\/\\\\]+)[\/\\\\]*$/');
+if (preg_match($pattern, $path, $matches))
+    return $matches[1];
+return '';
+}
 
 // +-----------------------------------------------------------------------+
 // |                          sending html code                            |
