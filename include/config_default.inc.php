@@ -109,7 +109,7 @@ $conf['paginate_pages_around'] = 2;
 
 // show_version : shall the version of Piwigo be displayed at the
 // bottom of each page ?
-$conf['show_version'] = true;
+$conf['show_version'] = false;
 
 // meta_ref to reference multiple sets of incorporated pages or elements
 // Set it false to avoid referencing in Google, and other search engines.
@@ -222,7 +222,7 @@ $conf['available_permission_levels'] = array(0,1,2,4,8);
 //
 // This configuration parameter is set to true in BSF branch and to false
 // elsewhere.
-$conf['check_upgrade_feed'] = true;
+$conf['check_upgrade_feed'] = false;
 
 // rate_items: available rates for a picture
 $conf['rate_items'] = array(0,1,2,3,4,5);
@@ -273,9 +273,6 @@ $conf['album_description_on_all_pages'] = false;
 
 // Number of years displayed in the history compare mode (for the years chart)
 $conf['stat_compare_year_displayed'] = 5;
-
-// Limit for linked albums search
-$conf['linked_album_search_limit'] = 100;
 
 // +-----------------------------------------------------------------------+
 // |                                 email                                 |
@@ -451,7 +448,7 @@ $conf['lounge_max_duration'] = 5*60;
 $conf['show_queries'] = false;
 
 // show_gt : display generation time at the bottom of each page
-$conf['show_gt'] = true;
+$conf['show_gt'] = false;
 
 // debug_l10n : display a warning message each time an unset language key is
 // accessed
@@ -464,7 +461,7 @@ $conf['debug_template'] = false;
 $conf['debug_mail'] = false;
 
 // die_on_sql_error: if an SQL query fails, should everything stop?
-$conf['die_on_sql_error'] = true;
+$conf['die_on_sql_error'] = false;
 
 // if true, some language strings are replaced during template compilation
 // (instead of template output). this results in better performance. however
@@ -817,11 +814,13 @@ $conf['themes_dir'] = PHPWG_ROOT_PATH.'themes';
 $conf['enable_synchronization'] = true;
 
 // permitted characters for files/directories during synchronization
-// $conf['sync_chars_regex'] = '/^[a-zA-Z0-9-_.]+$/';
+//$conf['sync_chars_regex'] = '/^[a-zA-Z0-9-_.]+$/';
+// Modify by vitive
 $conf['sync_chars_regex'] = '/[\x{1100}-\x{11FF}\x{3130}-\x{318F}\x{AC00}-\x{D7AF}0-9a-zA-Z]+/u';
 
 // folders name excluded during synchronization
-$conf['sync_exclude_folders'] = array();
+// @eaDir add by vitive
+$conf['sync_exclude_folders'] = array('@eaDir');
 
 // PEM url (default is http://piwigo.org/ext)
 $conf['alternative_pem_url'] = '';
